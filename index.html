@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anlık Sohbet Uygulaması</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-root">
+    <!-- Login ekranı -->
+    <div class="login-overlay" id="loginOverlay">
+      <div class="login-card">
+        <h1>sohbet<span>.live</span></h1>
+        <p class="subtitle">Anlık, sade ve hızlı sohbet.</p>
+
+        <label for="usernameInput">Kullanıcı adın</label>
+        <input
+          type="text"
+          id="usernameInput"
+          placeholder="Örn: r0yc0ld"
+          maxlength="20"
+        />
+
+        <button id="loginButton">Sohbete Gir</button>
+        <p class="login-error" id="loginError"></p>
+      </div>
+    </div>
+
+    <!-- Ana chat ekranı -->
+    <div class="chat-layout" id="chatLayout" style="display:none;">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Online</h2>
+          <span id="currentUserLabel"></span>
+        </div>
+        <div class="user-list" id="userList"></div>
+      </aside>
+
+      <!-- Chat paneli -->
+      <main class="chat-panel">
+        <header class="chat-header">
+          <div>
+            <h2>Genel Sohbet</h2>
+            <p>Mesajlarını anlık paylaş, istersen sil.</p>
+          </div>
+          <div class="chat-status" id="chatStatus">Bağlanıyor...</div>
+        </header>
+
+        <section class="chat-messages" id="chatMessages"></section>
+
+        <footer class="chat-input-bar">
+          <input
+            type="text"
+            id="messageInput"
+            placeholder="Mesaj yaz ve Enter'a bas..."
+          />
+          <button id="sendButton">Gönder</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
